@@ -7,7 +7,7 @@
 -->
 <html>
 <head>
-<title>Eventually by HTML5 UP</title>
+<title>Mad Money Summaries Homepage</title>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport"/>
 <link href="assets/css/main.css" rel="stylesheet"/>
@@ -41,6 +41,9 @@
 					Try it below, its always free! 
 				</p>
 <!-- your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
+
+
+
 </header>
 <!-- <h1>Select a Date:</h1> -->
 <select class="date-select" onchange="window.location.href=this.value"><option value="./MM_summary_2024-10-31.html">October 31, 2024</option>
@@ -71,6 +74,16 @@
 <option value="">Select Date For Summary</option>
 <!-- Add more dates as needed -->
 </select>
+<script>
+// const selectElements = document.getElementsByClassName('date-select');
+// const selectElement = selectElements[0];
+const selectElement = document.querySelector('.date-select');
+const newOption = document.createElement('option');
+newOption.text = 'Select Date For Summary';
+newOption.value = '';
+newOption.selected = true;
+selectElement.insertBefore(newOption, selectElement.options[0]);
+</script>
 <!-- R&D
 		<label for="date-select">Select Date For Summary:</label>
 	<select id="date-select" onchange="window.location.href=this.value">
