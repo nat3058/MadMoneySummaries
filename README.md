@@ -25,6 +25,8 @@ This website is the result of the two.
 * **Interactive Insights:** Would be cool if users could ask additional or followup questions regardign the summary info to the AI (such as Can you explain what this term means? or Give me more details regarding XYZ segement of the episode.)
 * **Improve Summary Quality:** Experiment with different ways providing context/prompts, summarization methods, hyperparameters like chunk size, other methods like RAG, better preprocessing, other audio-to-text transcription techniques to improve transcrption quality, etc.
 * **Summaries Sent Stright To Email Inbox:** Implement feature to allow users to sign up for emails with summaries of every new episode 
-* More generally, clean up the python script code... perhaps refactor into a easy-to-use library to abstract information gathering/preprocessing methods 
+* More generally, clean up the python script code... perhaps refactor into a easy-to-use library to abstract information gathering/preprocessing methods
+* RAG chatbot with context of all the past summaries from past episodes to ask questions about Jim Cramer's historical thoughts regarding an specific stock or topic
+* MAKE SUMMARY GENERATION FULLY AUTOMATIC
 * Host the website with a custom domain name
 * Other shows?!? Shark Tank? Squak Box? Youtube Channels (Low Level Learning)!?!?
