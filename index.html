@@ -44,7 +44,53 @@
 <!-- your next big thing. Brought to you by <a href="http://html5up.net">HTML5 UP</a>.</p> -->
 </header>
 <!-- <h1>Select a Date:</h1> -->
-<select class="date-select" onchange="window.location.href=this.value"><option value="./MM_summary_2024-11-01.html">November 01, 2024</option>
+<select class="date-select" onchange="window.location.href=this.value">
+<option value="./MM_summary_2025-03-06.html">March 06, 2025</option>
+<option value="./MM_summary_2025-03-05.html">March 05, 2025</option>
+<option value="./MM_summary_2025-03-04.html">March 04, 2025</option>
+<option value="./MM_summary_2025-03-03.html">March 03, 2025</option>
+<option value="./MM_summary_2025-02-28.html">February 28, 2025</option>
+<option value="./MM_summary_2025-02-27.html">February 27, 2025</option>
+<option value="./MM_summary_2025-02-26.html">February 26, 2025</option>
+<option value="./MM_summary_2025-02-25.html">February 25, 2025</option>
+<option value="./MM_summary_2025-02-24.html">February 24, 2025</option>
+<option value="./MM_summary_2025-02-21.html">February 21, 2025</option>
+<option value="./MM_summary_2025-02-20.html">February 20, 2025</option>
+<option value="./MM_summary_2025-02-19.html">February 19, 2025</option>
+<option value="./MM_summary_2025-02-18.html">February 18, 2025</option>
+<option value="./MM_summary_2025-02-14.html">February 14, 2025</option>
+<option value="./MM_summary_2025-02-13.html">February 13, 2025</option>
+<option value="./MM_summary_2025-02-12.html">February 12, 2025</option>
+<option value="./MM_summary_2025-02-11.html">February 11, 2025</option>
+<option value="./MM_summary_2025-02-10.html">February 10, 2025</option>
+<option value="./MM_summary_2025-02-07.html">February 07, 2025</option>
+<option value="./MM_summary_2025-02-06.html">February 06, 2025</option>
+<option value="./MM_summary_2025-02-05.html">February 05, 2025</option>
+<option value="./MM_summary_2025-02-04.html">February 04, 2025</option>
+<option value="./MM_summary_2025-02-03.html">February 03, 2025</option>
+<option value="./MM_summary_2025-01-31.html">January 31, 2025</option>
+<option value="./MM_summary_2025-01-30.html">January 30, 2025</option>
+<option value="./MM_summary_2025-01-29.html">January 29, 2025</option>
+<option value="./MM_summary_2025-01-28.html">January 28, 2025</option>
+<option value="./MM_summary_2025-01-27.html">January 27, 2025</option>
+<option value="./MM_summary_2025-01-24.html">January 24, 2025</option>
+<option value="./MM_summary_2025-01-23.html">January 23, 2025</option>
+<option value="./MM_summary_2025-01-22.html">January 22, 2025</option>
+<option value="./MM_summary_2025-01-21.html">January 21, 2025</option>
+<option value="./MM_summary_2025-01-17.html">January 17, 2025</option>
+<option value="./MM_summary_2025-01-16.html">January 16, 2025</option>
+<option value="./MM_summary_2025-01-15.html">January 15, 2025</option>
+<option value="./MM_summary_2025-01-14.html">January 14, 2025</option>
+<option value="./MM_summary_2025-01-13.html">January 13, 2025</option>
+<option value="./MM_summary_2025-01-10.html">January 10, 2025</option>
+<option value="./MM_summary_2025-01-08.html">January 08, 2025</option>
+<option value="./MM_summary_2025-01-07.html">January 07, 2025</option>
+<option value="./MM_summary_2024-11-08.html">November 08, 2024</option>
+<option value="./MM_summary_2024-11-07.html">November 07, 2024</option>
+<option value="./MM_summary_2024-11-06.html">November 06, 2024</option>
+<option value="./MM_summary_2024-11-05.html">November 05, 2024</option>
+<option value="./MM_summary_2024-11-04.html">November 04, 2024</option>
+<option value="./MM_summary_2024-11-01.html">November 01, 2024</option>
 <option value="./MM_summary_2024-10-31.html">October 31, 2024</option>
 <option value="./MM_summary_2024-10-30.html">October 30, 2024</option>
 <option value="./MM_summary_2024-10-29.html">October 29, 2024</option>
@@ -82,6 +128,51 @@ newOption.text = 'Select Date For Summary';
 newOption.value = '';
 newOption.selected = true;
 selectElement.insertBefore(newOption, selectElement.options[0]);
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   fetch('https://ipapi.co/json/')
+//     .then(response => response.json())
+//     .then(data => {
+//       // Send ipapi.co response data to Cloudflare Worker
+//       fetch("https://workers-sum.summaries.workers.dev/", {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(data),
+//         mode: 'no-cors',
+//       })
+//       .then(response => response.text())
+//       .then(message => console.log(message))
+//       .catch(error => console.error("Error:", error));
+//     })
+//     .catch(error => console.error("Error fetching ipapi.co data:", error));
+// });
+
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+      const userData = {
+        pathname: window.location.pathname,
+        ip: data.ip,
+        // Add other relevant data
+      };
+
+      fetch("https://workers-sum.summaries.workers.dev/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+        mode: 'no-cors',
+      })
+      .then(response => response.text())
+      .then(message => console.log(message))
+      .catch(error => console.error("Error:", error));
+    })
+    .catch(error => console.error("Error fetching ipapi.co data:", error));
+});
 </script>
 <!-- R&D
 		<label for="date-select">Select Date For Summary:</label>
