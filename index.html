@@ -24,8 +24,9 @@
             </header>
             <p class="cta">Select a date below to view the summary - Always free!</p>
             <div class="select-container">
-                <select class="date-select" onchange="window.location.href=this.value" aria-label="Select date for summary">
-<option value="./MM_summary_2025-03-06.html">March 06, 2025</option>
+                <select class="date-select" onchange="window.location.href=this.value" aria-label="Select date for summary" role="listbox" defaultValue="">
+                    <option value="" disabled selected hidden>Select Date For Summary</option>
+                    <option value="./MM_summary_2025-03-06.html">March 06, 2025</option>
 <option value="./MM_summary_2025-03-05.html">March 05, 2025</option>
 <option value="./MM_summary_2025-03-04.html">March 04, 2025</option>
 <option value="./MM_summary_2025-03-03.html">March 03, 2025</option>
@@ -105,12 +106,7 @@
     <script>
 // const selectElements = document.getElementsByClassName('date-select');
 // const selectElement = selectElements[0];
-const selectElement = document.querySelector('.date-select');
-const newOption = document.createElement('option');
-newOption.text = 'Select Date For Summary';
-newOption.value = '';
-newOption.selected = true;
-selectElement.insertBefore(newOption, selectElement.options[0]);
+// const selectElement = document.querySelector('.date-select');
 
 // document.addEventListener("DOMContentLoaded", function() {
 //   fetch('https://ipapi.co/json/')
