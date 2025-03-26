@@ -86,14 +86,17 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-height: 100dvh;
   background-color: #000;
-  padding: 2rem 0;
+  padding: clamp(1rem, 5vw, 2rem) clamp(0.5rem, 3vw, 1.5rem);
   font-family: 'Inter', sans-serif;
   color: #ffffff;
   position: relative;
   z-index: 2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
   body.is-preload *, body.is-preload *:before, body.is-preload *:after {
     -moz-animation: none !important;
@@ -120,8 +123,9 @@ body {
 .content {
   width: 100%;
   max-width: 800px;
-  padding: 0 1rem;
+  padding: 0 clamp(0.5rem, 3vw, 1rem);
   position: relative;
+  margin: 0 auto;
 }
 
 #header {
@@ -218,30 +222,47 @@ h1 span:hover {
   max-width: 400px;
   margin: 0 auto;
   position: relative;
+  z-index: 1;
 }
 
 .date-select {
   width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: clamp(0.9rem, 3vw, 1rem);
-  background-color: rgba(255, 255, 255, 0.05);
+  padding: 1rem 2.5rem 1rem 1rem;
+  font-size: clamp(1rem, 4vw, 1.1rem);
+  background-color: rgba(255, 255, 255, 0.1);
+  min-height: 3.5rem;
+  line-height: 1.5;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  font-weight: 500;
   border: 2px solid #02eb86;
   border-radius: 8px;
-  color: #ffffff;
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   appearance: none;
   -webkit-appearance: none;
+  position: relative;
+  z-index: 2;
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%2302eb86' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 1rem center;
+  background-position: right 0.75rem center;
   background-size: 1.2rem;
 }
 
 .date-select:hover {
   background-color: rgba(255, 255, 255, 0.08);
   border-color: #fcf911;
+}
+
+@media (hover: none) {
+  .date-select:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #02eb86;
+  }
 }
 
 .date-select:focus {
@@ -254,12 +275,72 @@ h1 span:hover {
   background-color: #000;
   color: #fff;
   padding: 0.5rem;
+  position: relative;
+  z-index: 3;
+}
+
+.date-select option:first-child {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.date-select option[disabled] {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* Mobile First Responsive Design */
 @media (max-width: 768px) {
   body {
-    padding: 1rem 0;
+    padding: 1.5rem 1rem;
+    min-height: 100dvh;
+  }
+
+  .content {
+    padding: 0 0.75rem;
+    width: 100%;
+  }
+
+  h1 {
+    font-size: clamp(1.75rem, 8vw, 2.25rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .tagline {
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+
+  .cta {
+    margin: 1.5rem 0 1rem;
+    text-align: center;
+    font-size: clamp(0.9rem, 4vw, 1rem);
+  }
+
+  .date-select {
+    font-size: 16px; /* Prevent iOS zoom on focus */
+    padding: 1rem 2.5rem 1rem 1rem;
+    min-height: 3.5rem;
+    margin-top: 0.5rem;
+    touch-action: manipulation;
+  }
+
+  .select-container {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  /* Improve touch targets */
+  .date-select option {
+    padding: 1rem 0.75rem;
+    min-height: 3rem;
+  }
+}
+
+/* Smaller Screens */
+@media (max-width: 480px) {
+  body {
+    padding: 1rem 0.5rem;
   }
 
   .content {
@@ -267,35 +348,8 @@ h1 span:hover {
   }
 
   h1 {
-    font-size: clamp(1.75rem, 8vw, 2.25rem);
-  }
-
-  .tagline {
-    font-size: clamp(0.9rem, 4vw, 1.1rem);
-  }
-
-  .date-select {
-    font-size: clamp(0.85rem, 4vw, 0.95rem);
-    padding: 0.75rem 0.75rem;
-  }
-
-  .select-container {
-    max-width: 100%;
-  }
-}
-
-/* Smaller Screens */
-@media (max-width: 480px) {
-  body {
-    padding: 0.75rem 0;
-  }
-
-  .content {
-    padding: 0 0.25rem;
-  }
-
-  h1 {
-    font-size: clamp(1.5rem, 10vw, 2rem);
+    font-size: clamp(1.5rem, 8vw, 1.75rem);
+    letter-spacing: -0.02em;
     line-height: 1.2;
   }
 
